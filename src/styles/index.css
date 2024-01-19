@@ -1,3 +1,13 @@
 /* 
     General Styles
 */
+.fotoperfil{
+    margin-left: 10px;
+    width: 150px;
+    height: 150px;
+    border-radius: 100%;
+}
+
+.ContactCard{
+    margin-left: 13%;
+}

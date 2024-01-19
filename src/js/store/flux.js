@@ -12,6 +12,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
+				,
+				{
+					title: "CONTACT",
+					background: "white",
+					initial: "white"
+				}
 			]
 		},
 		actions: {
