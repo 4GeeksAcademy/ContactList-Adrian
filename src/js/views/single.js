@@ -19,12 +19,12 @@ export const Single = (props) => {
 				<hr className="my-4" />
 			</div>
 			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
+				<span className="btn btn-primary btn-lg ms-5" href="#" role="button">
 					Back home
 				</span>
 			</Link>
 			<Link to="/AddContact">
-				<button className="btn btn-secondary btn-lg">AddContact</button>
+				<button className="btn btn-secondary btn-lg ms-5">AddContact</button>
 			</Link>
 		</div>
 	);

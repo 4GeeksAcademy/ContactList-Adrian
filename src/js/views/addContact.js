@@ -3,7 +3,7 @@ import React from "react";
 export const AddContact = () => {
     return (
         <div className="text-center mt-5">
-
+           
             <div className="p-5">
                 <div className="input-group mb-3">
                     <span className="input-group-text" id="basic-addon1">@</span>
@@ -42,7 +42,8 @@ export const AddContact = () => {
 
 
                 </div>
-
+                
+                <button className="btn btn-primary w-100"> ADD CONTACT</button>
             </div>
 
         </div>
