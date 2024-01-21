@@ -8,24 +8,17 @@ export const Single = (props) => {
 	const params = useParams();
 	return (
 		<div>
-			<div className="jumbotron ">
-				<h1 className="display-4 text-center">
+			<div className="jumbotron bg-black text-white">
+				<h1 className="display-4 text-center  bg-black text-white">
 					{" "}
 					{store.demo[params.theid].title}
 				</h1>
 
 				<Contact></Contact>
 
-				<hr className="my-4" />
+				
 			</div>
-			<Link to="/">
-				<span className="btn btn-primary btn-lg ms-5" href="#" role="button">
-					Back home
-				</span>
-			</Link>
-			<Link to="/AddContact">
-				<button className="btn btn-secondary btn-lg ms-5">AddContact</button>
-			</Link>
+			
 		</div>
 	);
 };

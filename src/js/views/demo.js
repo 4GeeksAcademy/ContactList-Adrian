@@ -9,13 +9,13 @@ export const Demo = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container">
+		<div className="container bg-black text-white">
 			<ul className="list-group">
 				{store.demo.map((item, index) => {
 					return (
 						<li
 							key={index}
-							className="list-group-item d-flex justify-content-between"
+							className="list-group-item d-flex justify-content-between  bg-black text-white"
 							style={{ background: item.background }}>
 							<Link to={"/single/" + index}>
 								<span>Check your {item.title}</span>

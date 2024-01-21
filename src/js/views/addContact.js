@@ -27,12 +27,10 @@ export const AddContact = ({ onAddContact }) => {
   };
 
   return (
-    <div className="text-center mt-5">
-      <div className="p-5">
+    <div className="text-center  w-25 AddContact">
+      <div className="p-2">
         <div className="input-group mb-3">
-          <span className="input-group-text" id="basic-addon1">
-            @
-          </span>
+         
           <input
             type="text"
             className="form-control"
@@ -46,6 +44,7 @@ export const AddContact = ({ onAddContact }) => {
         </div>
 
         <div className="input-group mb-3">
+      
           <input
             type="text"
             className="form-control"
@@ -56,16 +55,12 @@ export const AddContact = ({ onAddContact }) => {
             value={contactData.email}
             onChange={handleInputChange}
           />
-          <span className="input-group-text" id="basic-addon2">
-            @example.com
-          </span>
+         
         </div>
 
         <div className="mb-3">
           <div className="input-group">
-            <span className="input-group-text" id="basic-addon3">
-              Address
-            </span>
+          
             <input
               type="text"
               className="form-control"
@@ -80,9 +75,7 @@ export const AddContact = ({ onAddContact }) => {
 
         <div className="mb-3">
           <div className="input-group">
-            <span className="input-group-text" id="basic-addon3">
-              Phone
-            </span>
+            
             <input
               type="text"
               className="form-control"

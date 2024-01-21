@@ -18,7 +18,7 @@ export const Contact = () => {
   };
 
   return (
-    <div className="text-center mt-5">
+    <div className="text-center mt-2">
          {/* Renderizar el formulario de AddContact y pasar la función addContact como prop */}
       <AddContact onAddContact={addContact} />
          {/* Renderizar la lista de contactos */}
