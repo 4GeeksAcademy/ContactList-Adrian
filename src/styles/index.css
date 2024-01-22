@@ -14,3 +14,15 @@
 .AddContact{
     margin-left: 37%;
 }
+
+.hover {
+    background-color: white;
+    color: black;
+    transition: transform 0.3s; 
+}
+
+.hover:hover {
+    background-color: yellow;
+    color: black;
+  
+}

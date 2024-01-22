@@ -9,16 +9,16 @@ export const Demo = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container bg-black text-white">
+		<div className="container bg-black text-white ">
 			<ul className="list-group">
 				{store.demo.map((item, index) => {
 					return (
 						<li
 							key={index}
-							className="list-group-item d-flex justify-content-between  bg-black text-white"
+							className="list-group-item d-flex justify-content-between  p-5"
 							style={{ background: item.background }}>
 							<Link to={"/single/" + index}>
-								<span>Check your {item.title}</span>
+								<span className=" text-black fs-4 hover p-5">Check here your {item.title}</span>
 							</Link>
 							{// Conditional render example
 							// Check to see if the background is orange, if so, display the message
