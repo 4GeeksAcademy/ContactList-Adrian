@@ -7,6 +7,8 @@ import { Context } from "../store/appContext.js";
 export const Contact = () => {
   const [contacts, setContacts] = useState([]);
 
+  
+
   const {store, actions} = useContext(Context)
   console.log("store",store.contacts)
   

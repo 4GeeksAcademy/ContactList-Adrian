@@ -1,8 +1,9 @@
+// AddContact.js
 import React, { useState } from "react";
 
-export const AddContact = ({ onAddContact }) => {
+export const AddContact = ({ onAddContact, putContacts }) => {
   const [contactData, setContactData] = useState({
-    name: "",
+    full_name: "",
     email: "",
     address: "",
     phone: "",
@@ -14,10 +15,8 @@ export const AddContact = ({ onAddContact }) => {
   };
 
   const handleAddContact = () => {
-    // Llamar a la función proporcionada por prop para agregar el nuevo contacto
     onAddContact(contactData);
-
-    // Limpiar el formulario
+    putContacts(contactData);
     setContactData({
       name: "",
       email: "",
@@ -27,10 +26,9 @@ export const AddContact = ({ onAddContact }) => {
   };
 
   return (
-    <div className="text-center  w-25 AddContact">
+    <div className="text-center w-25 AddContact">
       <div className="p-2">
         <div className="input-group mb-3">
-         
           <input
             type="text"
             className="form-control"
@@ -44,7 +42,6 @@ export const AddContact = ({ onAddContact }) => {
         </div>
 
         <div className="input-group mb-3">
-      
           <input
             type="text"
             className="form-control"
@@ -55,12 +52,10 @@ export const AddContact = ({ onAddContact }) => {
             value={contactData.email}
             onChange={handleInputChange}
           />
-         
         </div>
 
         <div className="mb-3">
           <div className="input-group">
-          
             <input
               type="text"
               className="form-control"
@@ -75,7 +70,6 @@ export const AddContact = ({ onAddContact }) => {
 
         <div className="mb-3">
           <div className="input-group">
-            
             <input
               type="text"
               className="form-control"
