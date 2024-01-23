@@ -1,12 +1,4 @@
-/* 
-    General Styles
-*/
-.fotoperfil{
-    margin-left: 10px;
-    width: 150px;
-    height: 150px;
-    border-radius: 100%;
-}
+
 
 .ContactCard{
     margin-left: 13%;
@@ -26,3 +18,19 @@
     color: black;
   
 }
+
+.Titular1{
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.Titular2{
+  padding-top: 140px;
+
+}
+.contactoHover:hover{
+    background-color: white;
+    color: yellow;
+}
+

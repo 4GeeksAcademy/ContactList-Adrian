@@ -1,43 +1,52 @@
-import React, { useContext, useState } from "react";
-import { AddContact } from "./addContact.js";
-import { ContactCard } from "../component/ContactCard.js";
-import "../../styles/home.css";
-import { Context } from "../store/appContext.js";
+// Contact.js
+import React, { useContext, useEffect } from "react";
+import { Context } from "../store/appContext";
+import { Link } from "react-router-dom";
+import ContactCard from "../component/contactCard";
 
-export const Contact = () => {
-  const [contacts, setContacts] = useState([]);
+const Contact = () => {
+  const { store, actions } = useContext(Context);
 
-  
+  // Aquí se llama al método fetchContacts de actions para que se ejecute cuando se cargue el componente
+  useEffect(() => {
+    actions.fetchContacts();
+  }, [actions]);
 
-  const {store, actions} = useContext(Context)
-  console.log("store",store.contacts)
-  
-  const addContact = (newContact) => {
-    // Agregar el nuevo contacto al estado
-    setContacts([...contacts, newContact]);
+  // Llamo al actions para borrar el contacto pasando el id del contacto
+  const handleDeleteContact = (contactId) => {
+    actions.deleteContact(contactId);
   };
 
-  const deleteContact = (index) => {
-    // Filtrar los contactos excluyendo el que se va a eliminar
-    const updatedContacts = contacts.filter((_, i) => i !== index);
-    setContacts(updatedContacts);
+  // Quitar los puntos de la lista
+  const ulStyle = {
+    listStyleType: "none",
   };
 
   return (
-    <div className="text-center mt-2">
-         {/* Renderizar el formulario de AddContact y pasar la función addContact como prop */}
-      <AddContact onAddContact={addContact} />
-         {/* Renderizar la lista de contactos */}
-      {store.contacts.map((contact, index) => (
-        <ContactCard
-          key={index}
-          {...contact}
-          onDelete={() => deleteContact(index)}
-        />
-      ))}
-
-
-      
+    <div className="p-4">
+      <div className="Titular1">
+        <h1 className="display-6 fw-bold ">Contact List</h1>
+        <Link to="/addContact" className="btn btn-primary">
+          Add contact
+        </Link>
+        <Link to="/" className="btn btn-success ms-3">
+          Home
+        </Link>
+      </div>
+      <div className="row row-cols-4 row-cols-md-2 g-4 Titular2" style={ulStyle}>
+        {store.contacts.map(
+          (contact) =>
+            contact.id && (
+              <ContactCard
+                key={contact.id}
+                contact={contact}
+                onDeleteContact={handleDeleteContact}
+              />
+            )
+        )}
+      </div>
     </div>
   );
 };
+
+export default Contact;

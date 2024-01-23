@@ -1,11 +1,13 @@
 import React from "react";
-
+import rigoImage from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import { Link } from "react-router-dom";
 
 export const Home = () => (
-	<div className="text-center mt-5 text-white bg-black">
-		<h1 className="m-5 p-5">Welcome to your </h1>
-		<h1 className="m-4 p-4"> Online </h1>
-		<h1 className="m-5 p-5">Contact Menu</h1>
+	<div className="text-center Titular TitularX">
+		<h1 className="display-1 fw-bold">Adrian Rios Ruiz</h1>
+		<Link className="display-5" to="/contact">
+			<h4>Check your Contacts</h4>
+		</Link>
 	</div>
 );

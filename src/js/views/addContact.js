@@ -1,91 +1,127 @@
-// AddContact.js
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { Context } from "../store/appContext";
+import { useNavigate, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export const AddContact = ({ onAddContact, putContacts }) => {
+// Los parametros que estan en la URL se pueden acceder desde el componente usando el hook useParams
+// los estoy pasando desde el componente ContactCard
+export const AddContact = ({ params }) => {
+  // Este console log muestra si los parametros llegaron al componente
+  console.log("Parámetros de llegada:", params);
+
+  const { actions, store } = useContext(Context);
+  const navigate = useNavigate();
+  const { contactId } = useParams();
+
+  // El estado inicial del formulario es un objeto vacío con los campos del formulario
   const [contactData, setContactData] = useState({
     full_name: "",
     email: "",
+    agenda_slug: "Adri2527",
     address: "",
     phone: "",
   });
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setContactData({ ...contactData, [name]: value });
+  //Si hay un id en el contacto, se ejecuta el useEffect y se actualiza el estado del formulario
+  useEffect(() => {
+    if (contactId) {
+      const selectedContact = store.contacts.find(
+        (contact) => contact.id === contactId
+      );
+      // El contacto seleccionado se guarda en el estado del formulario
+      if (selectedContact) {
+        setContactData({
+          // El spread operator me permite replicar el contacto seleccionado y añadirle el campo agenda_slug
+          ...selectedContact,
+          agenda_slug: "Adri2527",
+        });
+      }
+    }
+  }, [contactId, store.contacts]);
+
+  // Cada vez que hay un cambio en los campos del formulario, se actualiza el estado del formulario
+  const handleChange = (e) => {
+    // target.name y target.value son propiedades de los inputs que me permiten acceder al nombre y al valor del input
+    setContactData({ ...contactData, [e.target.name]: e.target.value });
   };
 
-  const handleAddContact = () => {
-    onAddContact(contactData);
-    putContacts(contactData);
-    setContactData({
-      name: "",
-      email: "",
-      address: "",
-      phone: "",
-    });
+  const handleSubmit = (e) => {
+    // Evito que se recargue la página
+    e.preventDefault();
+
+    // Si hay un id en el contacto, llamo al método updateContact de actions pasando el id del contacto y los datos del contacto
+    if (contactData.id) {
+      actions.updateContact(contactData.id, contactData);
+    } else {
+      actions.createContact(contactData);
+    }
+
+    // Al enviar el formulario, me voy a la página de contactos
+    navigate("/contact");
   };
 
   return (
-    <div className="text-center w-25 AddContact">
-      <div className="p-2">
-        <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Name"
-            aria-label="Name"
-            aria-describedby="basic-addon1"
-            name="name"
-            value={contactData.name}
-            onChange={handleInputChange}
-          />
-        </div>
+    <div className="p-3 container">
+      <form onSubmit={handleSubmit}>
+        <h1 className="display-5 mb-4">Add a new contact</h1>
+        <label htmlFor="fullName" className="form-label">
+          Full name
+        </label>
+        <input
+          className="form-control form-control-lg"
+          id="fullName"
+          type="text"
+          name="full_name"
+          value={contactData.full_name}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="email" className="form-label">
+          Email
+        </label>
+        <input
+          className="form-control form-control-lg"
+          id="email"
+          type="email"
+          name="email"
+          value={contactData.email}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="address" className="form-label">
+          Address
+        </label>
+        <input
+          className="form-control form-control-lg"
+          id="address"
+          type="text"
+          name="address"
+          value={contactData.address}
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="phone" className="form-label">
+          Phone
+        </label>
+        <input
+          className="form-control form-control-lg"
+          id="phone"
+          type="tel"
+          name="phone"
+          value={contactData.phone}
+          onChange={handleChange}
+          required
+        />
+        <div>
+          <button className="btn btn-info btn-lg mt-3" type="submit">
+            Create contact
+          </button>
 
-        <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Email"
-            aria-label="Recipient's username"
-            aria-describedby="basic-addon2"
-            name="email"
-            value={contactData.email}
-            onChange={handleInputChange}
-          />
+          <Link to="/contact" className="btn btn-secondary btn-lg mt-3 ms-4">
+            Go back
+          </Link>
         </div>
-
-        <div className="mb-3">
-          <div className="input-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Address"
-              aria-describedby="basic-addon3"
-              name="address"
-              value={contactData.address}
-              onChange={handleInputChange}
-            />
-          </div>
-        </div>
-
-        <div className="mb-3">
-          <div className="input-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Phone"
-              aria-describedby="basic-addon3"
-              name="phone"
-              value={contactData.phone}
-              onChange={handleInputChange}
-            />
-          </div>
-        </div>
-
-        <button className="btn btn-primary w-100" onClick={handleAddContact}>
-          ADD CONTACT
-        </button>
-      </div>
+      </form>
     </div>
   );
 };

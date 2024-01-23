@@ -1,0 +1,28 @@
+.Titular {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+@keyframes shine {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+TitularX{
+    font-family: 'Arial', sans-serif;
+    font-size: 2em;
+    background: linear-gradient(90deg, #fff, #ffcc00, #fff);
+    background-size: 200% 100%;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+    margin: 50px;
+    display: inline-block;
+    border-radius: 10px;
+    animation: shine 3s linear infinite;
+}
