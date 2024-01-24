@@ -45,7 +45,7 @@
     background-size: 200% 100%;
     color: transparent;
     background-clip: text;
-    animation: desplazamientoBrillante 2s linear infinite;
+    animation: desplazamientoBrillante 7s linear infinite;
 }
 
 @keyframes desplazamientoBrillante {
