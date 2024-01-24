@@ -34,3 +34,25 @@
     color: yellow;
 }
 
+.TitularX {
+    background: linear-gradient(to bottom left, black, rgb(213, 168, 168));
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.efectoOptico {
+    background: linear-gradient(to right, rgb(3, 246, 15), transparent, rgba(2, 174, 248, 0.975));
+    background-size: 200% 100%;
+    color: transparent;
+    background-clip: text;
+    animation: desplazamientoBrillante 2s linear infinite;
+}
+
+@keyframes desplazamientoBrillante {
+    0% {
+        background-position: 100% 0;
+    }
+    100% {
+        background-position: -100% 0;
+    }
+}
